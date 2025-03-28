@@ -1,0 +1,83 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="84a8d0a5db224b02bdf4d464fb683f99"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="b7e586830bc54026a0b8b1bef0fd405c"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="53bc76ff3db54c86b9c86a4051857e2d"
+				serviceId="nabu.utils.reflection.Service.listImplementations"
+				resultName="result932d023ab5f843d3b529082bee7afbcd"
+				temporaryMapping="true"
+				x="156"
+				y="99"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="959081c3c70248de9e53e4a6d1f0b95d"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>nabu.frameworks.sast.specs.globalSecurityAnalyzer</from>
+				<to>interfaceId</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="d1033b74184649318629274f4866b2f4"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result932d023ab5f843d3b529082bee7afbcd/implementations</from>
+			<to>implementations</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.For"
+			disabled="false"
+			id="c9e0588a3bde4ce988c77bceb53cc8e3"
+			lineNumber="3"
+			variable="implementation"
+			into="output/events">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				disabled="false"
+				id="c8840172c316448ebe7a2834e66934a5"
+				lineNumber="4">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="4f3930913a314dc293293a518994007f"
+					serviceId="nabu.frameworks.sast.specs.globalSecurityAnalyzer"
+					resultName="result13e5f07903b8480e9c59bb3a29d1708f"
+					temporaryMapping="true"
+					x="215"
+					y="65"
+					invocationOrder="0"
+					asynchronous="false"
+					recache="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="28f940eaf76945cca6e60581e3f03392"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>implementation/id</from>
+					<to>implementationId</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9ad2291e8aca4cbd9d5c22ba28b06b20"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>result13e5f07903b8480e9c59bb3a29d1708f/results</from>
+				<to>output/events</to>
+			</steps>
+		</steps>
+		<query>implementations</query>
+	</steps>
+</sequence>

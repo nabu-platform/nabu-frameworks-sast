@@ -1,0 +1,128 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="9f6eed51ff364213b472d674f3cf137d"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.For"
+			disabled="false"
+			id="d2aa8814ca7143d8a3d67502434b8aed"
+			lineNumber="2"
+			variable="newEvent">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				disabled="false"
+				id="41b6a4cc3cf4454c827cdfce72837a3d"
+				lineNumber="3">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="dcc88f628d384d9787061e2298733d67"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>newEvent/targetId</from>
+				<to>complexEvent/artifactId</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="4ea5ce82ebd24033ba395d6669a14407"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>newEvent/contextId</from>
+				<to>complexEvent/context</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="60ddd6bec88042ba90cc780c61d81930"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>newEvent/type</from>
+				<to>complexEvent/code</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="54e48ef5db21454197e5b6a94eee7199"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>sast-event</from>
+				<to>complexEvent/eventName</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="38d694e8c7a54c16b21b29181767e7a9"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>newEvent/id</from>
+				<to>complexEvent/externalId</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="78b2aabdd65d4228b1ec8082d089653c"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>sast</from>
+				<to>complexEvent/eventCategory</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="6f58e35285784664bfe8c8730e02a46e"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>newEvent/title</from>
+				<to>complexEvent/message</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="a34febcba6434d58b45847e5ba4b65b5"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>newEvent/detail</from>
+				<to>complexEvent/reason</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="4659228a33e748d48584177f4844e2e2"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>newEvent/severity</from>
+				<to>complexEvent/severity</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				disabled="false"
+				id="d58d9dcc87964bbba8db7a0f91397011"
+				lineNumber="4">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="a5bdcf02e76d4208aff192bd4861f0b6"
+					serviceId="nabu.utils.Event.fire"
+					resultName="result9091374186ce46298baf1d86f2fe7493"
+					temporaryMapping="true"
+					x="53"
+					y="76"
+					invocationOrder="0"
+					asynchronous="false"
+					recache="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="b3db383bdbe14eda8fcbaa7fd974bdc3"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>complexEvent</from>
+					<to>event</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Drop"
+					disabled="false"
+					id="2fd9b601770a438b8cd29f3a5313f726"
+					path="complexEvent" xsi:nil="true"/>
+		</steps>
+		<query>input/newEvents[severity == "CRITICAL" || severity == "ALERT" || severity == "EMERGENCY"]</query>
+	</steps>
+</sequence>

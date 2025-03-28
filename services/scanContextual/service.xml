@@ -1,0 +1,155 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="84a8d0a5db224b02bdf4d464fb683f99"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="b7e586830bc54026a0b8b1bef0fd405c"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="53bc76ff3db54c86b9c86a4051857e2d"
+				serviceId="nabu.utils.reflection.Service.listImplementations"
+				resultName="result932d023ab5f843d3b529082bee7afbcd"
+				temporaryMapping="true"
+				x="156"
+				y="99"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="959081c3c70248de9e53e4a6d1f0b95d"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>nabu.frameworks.sast.specs.contextualSecurityAnalyzer</from>
+				<to>interfaceId</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="d1033b74184649318629274f4866b2f4"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result932d023ab5f843d3b529082bee7afbcd/implementations</from>
+			<to>implementations</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.For"
+			disabled="false"
+			id="c9e0588a3bde4ce988c77bceb53cc8e3"
+			lineNumber="3"
+			variable="implementation">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				comment="Get sast context"
+				disabled="false"
+				id="d8ad006a1a9a4e35948c4baa01acf5f8"
+				lineNumber="4">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="bd5c767f15964bf6b091c59a308dc069"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>implementation/properties[key == "sastContext"]/value</from>
+				<to>contextType</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+				disabled="false"
+				id="60036985b7e64113b2fdd0e592995327"
+				label="contextType != null"
+				lineNumber="5">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					disabled="false"
+					id="8db8af7767c841ce9f27249328769c4b"
+					lineNumber="6">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="2a6a903a740749d68cc938b6b43e293f"
+						serviceId="nabu.utils.reflection.Node.listByType"
+						resultName="result79058fa35839499dbcadcf6af1bcd8e2"
+						temporaryMapping="true"
+						x="138"
+						y="51"
+						invocationOrder="0"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="39890026daf742a7b9830caf279820fa"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>contextType</from>
+						<to>type</to>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="8ec9f2ec43304859be39f723c554c063"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>result79058fa35839499dbcadcf6af1bcd8e2/nodes</from>
+					<to>contexts</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.For"
+					disabled="false"
+					id="a00c803087994f079014fae08466ea49"
+					lineNumber="7"
+					variable="contextToScan"
+					into="output/events">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+						disabled="false"
+						id="c8840172c316448ebe7a2834e66934a5"
+						lineNumber="8">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+							disabled="false"
+							id="a94329c2e5e843deb41abf3c1c48f94a"
+							serviceId="nabu.frameworks.sast.specs.contextualSecurityAnalyzer"
+							resultName="result88d004b66c68465fb10274cd92c41154"
+							temporaryMapping="true"
+							x="178"
+							y="93"
+							invocationOrder="0"
+							asynchronous="false"
+							recache="false">
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="495c4b65a697433fb2c852d8069b55e3"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>contextToScan/id</from>
+							<to>contextId</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="a9f9b519e7684598bbfbf0a1e474e953"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>implementation/id</from>
+							<to>implementationId</to>
+						</steps>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="da23e0dcf6624686be1362b94d12edc0"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>result88d004b66c68465fb10274cd92c41154/results</from>
+						<to>output/events</to>
+					</steps>
+				</steps>
+				<query>contexts</query>
+			</steps>
+		</steps>
+		<query>implementations</query>
+	</steps>
+</sequence>

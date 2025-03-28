@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2025-03-28T16:51:52.892+01:00" lastModified="2025-03-28T17:17:54.124+01:00" leaf="true" version="12">
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.sast.services.alert</references>
+    <references>nabu.frameworks.sast.services.scanGlobal</references>
+    <references>nabu.utils.Server.sleep</references>
+    <references>nabu.frameworks.sast.services.scanContextual</references>
+    <references>nabu.utils.types.NodeDescription</references>
+    <references>nabu.frameworks.sast.services.persist</references>
+    <references>nabu.utils.reflection.Node.dependencies</references>
+</node>

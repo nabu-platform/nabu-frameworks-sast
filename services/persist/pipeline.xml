@@ -1,0 +1,14 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field minOccurs="0" name="connectionId" type="java.lang.String"/>
+        <structure definition="nabu.frameworks.sast.securityEvent" maxOccurs="unbounded" minOccurs="0" name="events"/>
+    </structure>
+    <structure name="output">
+        <structure collectionName="securityEvents" definition="nabu.frameworks.sast.database.types.securityEvent" maxOccurs="unbounded" minOccurs="0" name="newEvents"/>
+    </structure>
+    <structure collectionName="securityEvents" definition="nabu.frameworks.sast.database.types.securityEvent" maxOccurs="unbounded" minOccurs="0" name="events"/>
+    <structure collectionName="securityEvents" definition="nabu.frameworks.sast.crud.securityEvent.types.output" enricher="nabu.frameworks.sast.crud.securityEvent.services.list" maxOccurs="unbounded" minOccurs="0" name="existing" persister="nabu.frameworks.sast.crud.securityEvent.batch.updateAll"/>
+    <field comment="We need to be able to recognize this security event to see if it is already reported/handled" maxOccurs="unbounded" minOccurs="0" name="existingGlobalIds" type="java.lang.String"/>
+    <field minOccurs="0" name="date" type="java.util.Date"/>
+    <field minOccurs="0" name="server" type="java.lang.String"/>
+</structure>

@@ -1,0 +1,9 @@
+<structure name="pipeline">
+    <structure name="input"/>
+    <structure name="output">
+        <structure definition="nabu.frameworks.sast.securityEvent" maxOccurs="unbounded" minOccurs="0" name="events"/>
+    </structure>
+    <structure definition="nabu.utils.types.NodeDescription" maxOccurs="unbounded" minOccurs="0" name="implementations"/>
+    <field minOccurs="0" name="contextType" type="java.lang.String"/>
+    <structure definition="nabu.utils.types.NodeDescription" maxOccurs="unbounded" minOccurs="0" name="contexts"/>
+</structure>

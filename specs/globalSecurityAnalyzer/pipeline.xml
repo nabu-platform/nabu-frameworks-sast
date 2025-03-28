@@ -1,0 +1,6 @@
+<structure name="pipeline">
+    <structure name="input"/>
+    <structure name="output">
+        <structure definition="nabu.frameworks.sast.securityEvent" maxOccurs="unbounded" minOccurs="0" name="results"/>
+    </structure>
+</structure>

@@ -1,0 +1,7 @@
+<structure name="pipeline">
+    <structure name="input">
+        <structure collectionName="securityEvents" definition="nabu.frameworks.sast.database.types.securityEvent" maxOccurs="unbounded" minOccurs="0" name="newEvents"/>
+    </structure>
+    <structure name="output"/>
+    <structure definition="be.nabu.utils.cep.impl.ComplexEventImpl" name="complexEvent"/>
+</structure>

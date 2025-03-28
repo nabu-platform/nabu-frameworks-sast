@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2025-03-28T16:35:24.138+01:00" lastModified="2025-03-28T16:58:59.563+01:00" leaf="true" version="18">
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.utils.reflection.Node.listByType</references>
+    <references>nabu.utils.reflection.Service.listImplementations</references>
+    <references>nabu.frameworks.sast.specs.contextualSecurityAnalyzer</references>
+    <references>java.lang.String</references>
+    <references>nabu.utils.types.NodeDescription</references>
+    <references>nabu.frameworks.sast.securityEvent</references>
+</node>

@@ -1,0 +1,10 @@
+<structure name="securityResult">
+    <field comment="When a security result is for a given context, this contains the id" minOccurs="0" name="contextId" type="java.lang.String"/>
+    <field comment="What is the target (artifact?) that it occurs in" name="targetId" type="java.lang.String"/>
+    <field comment="The error type, a static identifier of this type of error" name="type" type="java.lang.String"/>
+    <field comment="A particular instance of the error, for instance the type might be &quot;required&quot;, the instance might be &quot;required:something&quot;. If no particular instance is available, it is the same as type" name="instance" type="java.lang.String"/>
+    <field name="severity" type="be.nabu.utils.cep.api.EventSeverity"/>
+    <field comment="A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization" name="title" type="java.lang.String"/>
+    <field comment="A human-readable explanation specific to this occurrence of the problem." minOccurs="0" name="detail" type="java.lang.String"/>
+    <field comment="Suggested course of action" minOccurs="0" name="suggestion" type="java.lang.String"/>
+</structure>
